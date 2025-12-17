@@ -1,0 +1,13 @@
+name: CI - Train and Save the Model
+
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  matrix-pip:
+    name: Train and Save the Model
+    runs-on: ubuntu-latest
+    strategy:
