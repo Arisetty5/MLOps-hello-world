@@ -1,28 +1,48 @@
-# Hello-World MLOps
+# 🚀 CI/CD for Automated Model Training (MLOps Project)
 
-This repository demonstrates a tiny reproducible MLOps flow:
-1. Train a small model (`train.py`) — writes `artifacts/model.pkl` and `artifacts/metrics.json`
-2. Run predictions from the command line with `run_model.py --input "[5.1,3.5,1.4,0.2]"`
-3. Start a minimal Flask app with `python src/app.py` that serves `/predict`
-4. Build a Docker image with `docker build -t hello-mlops .`
-5. CI trains the model and uploads artifacts
+This repository demonstrates a **basic MLOps CI pipeline** where model training is fully automated using **GitHub Actions**.  
+The goal of this project is to show how **MLOps engineers support data scientists** by automating repetitive tasks such as environment setup, model training, and artifact management.
 
-## Quick start (local)
-1. Create and activate a venv (example using python 3.13 or 3.11):
-    python -m venv .venv
-    source .venv/bin/activate
 
-2. Install dependencies:
-    pip install --upgrade pip setuptools wheel
-    pip install -r requirements.txt
+---
 
-3. Train the model:
-    python train.py
+## 📌 Project Overview
 
-4. Run a single prediction from CLI:
-    python run_model.py --input "[5.1, 3.5, 1.4, 0.2]"
+Whenever code is pushed or a pull request is raised to the `main` branch, a CI pipeline is triggered that:
 
-5. Start the API:
-    python src/app.py
-   Then test:
-    curl -X POST "http://127.0.0.1:5000/predict" -H "Content-Type: application/json" -d '{"features":[5.1,3.5,1.4,0.2]}'
+- Sets up a Python environment
+- Installs project dependencies
+- Trains the machine learning model
+- Saves trained model and evaluation metrics
+- Uploads these artifacts for reproducibility and traceability
+
+This ensures that **model training is consistent, automated, and reproducible**.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python**: 3.10.12  
+- **CI/CD**: GitHub Actions  
+- **ML Libraries**: As defined in `requirements.txt`  
+- **Artifact Storage**: GitHub Actions Artifacts  
+
+---
+
+## 🔁 CI Workflow Details
+
+### Workflow Trigger
+The pipeline runs automatically on:
+- `push` to the `main` branch
+- `pull_request` to the `main` branch
+
+### Workflow Steps
+1. Checkout repository code  
+2. Set up Python environment  
+3. Upgrade `pip`, `setuptools`, and `wheel`  
+4. Install project dependencies  
+5. Train the ML model  
+6. Save model artifacts  
+7. Upload artifacts to GitHub Actions  
+
+---
